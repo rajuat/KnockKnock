@@ -2,6 +2,7 @@ package com.telstra.purple.knockknock.exercise;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletResponse;
 
 @SpringBootApplication
-@RequestMapping(value = "/api/")
+@RequestMapping(value = "/api/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ExerciseApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ExerciseApplication.class, args);
