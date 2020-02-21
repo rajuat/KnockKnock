@@ -1,5 +1,6 @@
 package com.telstra.purple.knockknock.exercise;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
+@EnableAutoConfiguration
 public class TriangleTypeAPI extends ExerciseApplication {
     /**
      * Returns the type of triangle given the lengths of its sides

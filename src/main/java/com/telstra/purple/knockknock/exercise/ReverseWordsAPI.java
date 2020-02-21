@@ -1,10 +1,12 @@
 package com.telstra.purple.knockknock.exercise;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@EnableAutoConfiguration
 public class ReverseWordsAPI extends ExerciseApplication {
     /**
      * Reverses the letters of each word in a sentence.
