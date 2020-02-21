@@ -19,7 +19,7 @@ public class TriangleTypeAPI extends ExerciseApplication {
     @GetMapping("TriangleType")
     public String getTriangleType(@RequestParam("a") int a, @RequestParam("b") int b, @RequestParam("c") int c) {
         if (isValidTriangle(a, b, c)) {
-            Set<Integer> uniqueNoOfSides = new HashSet();
+            Set<Integer> uniqueNoOfSides = new HashSet<>();
             uniqueNoOfSides.add(a);
             uniqueNoOfSides.add(b);
             uniqueNoOfSides.add(c);

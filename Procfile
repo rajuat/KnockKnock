@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/exercise-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar build/libs/exercise-0.0.1-SNAPSHOT.jar
