@@ -9,6 +9,6 @@ public class ReverseWordsAPITest {
     public void canReverseEachWordInASentence(){
         ReverseWordsAPI api = new ReverseWordsAPI();
         String reversed = api.reverseWords("Hello World");
-        Assertions.assertEquals("dlroW olleH", reversed);
+        Assertions.assertEquals("olleH dlroW", reversed);
     }
 }
