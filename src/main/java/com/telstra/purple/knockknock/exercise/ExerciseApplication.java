@@ -19,5 +19,8 @@ public class ExerciseApplication {
 	public void setResponseHeder(HttpServletResponse response){
 		response.setHeader("cache-control", "no-cache");
 		response.setHeader("cf-cache-status", "DYNAMIC");
+		response.setHeader("x-content-type-options", "nosniff");
 	}
+
+
 }

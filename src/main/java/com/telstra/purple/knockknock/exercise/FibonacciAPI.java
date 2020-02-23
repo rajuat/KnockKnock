@@ -1,6 +1,7 @@
 package com.telstra.purple.knockknock.exercise;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ public class FibonacciAPI extends ExerciseApplication {
      * @param index is the index of the fibonacci sequence
      * @return nth number of the fibonacci sequence
      */
-    @GetMapping(value = "Fibonacci", produces = "text/json")
+    @GetMapping(value = "Fibonacci", produces = MediaType.APPLICATION_JSON_VALUE)
     public long fibonacci(@RequestParam(value = "n") long index) throws Exception {
         if(index < 1) throw new IllegalArgumentException("Please provide a natural number.");
         if(index >= START_OVERFLOW_INDEX) throw new Exception("The fibonacci number with the given input is too large");
