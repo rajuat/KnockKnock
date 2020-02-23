@@ -1,5 +1,6 @@
 package com.telstra.purple.knockknock.exercise;
 
+import com.telstra.purple.knockknock.exercise.utils.StringPostProcessor;
 import com.telstra.purple.knockknock.exercise.utils.TriangleType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.MediaType;
@@ -23,18 +24,24 @@ public class TriangleTypeAPI extends ExerciseApplication {
      */
     @GetMapping(value = "TriangleType", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getTriangleType(@RequestParam("a") int lengthA, @RequestParam("b") int lengthB, @RequestParam("c") int lengthC) {
+        String answer = null;
         if (isValidTriangle(lengthA, lengthB, lengthC)) {
             Set<Integer> uniqueNoOfSides = new HashSet<>();
             uniqueNoOfSides.add(lengthA);
             uniqueNoOfSides.add(lengthB);
             uniqueNoOfSides.add(lengthC);
             int sides = uniqueNoOfSides.size();
-            if (sides == 1) return TriangleType.EQUILATERAL.toString();
-            if (sides == 2) return TriangleType.ISOSCELES.toString();
-            return TriangleType.SCALENE.toString();
+            if (sides == 1) {
+                answer = TriangleType.EQUILATERAL.toString();
+            } else if (sides == 2) {
+                answer = TriangleType.ISOSCELES.toString();
+            } else {
+                answer = TriangleType.SCALENE.toString();
+            }
         } else {
-            return TriangleType.ERROR.toString();
+            answer = TriangleType.ERROR.toString();
         }
+        return StringPostProcessor.process(answer);
     }
 
     /*

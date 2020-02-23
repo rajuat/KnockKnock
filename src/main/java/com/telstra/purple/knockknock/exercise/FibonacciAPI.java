@@ -17,9 +17,14 @@ public class FibonacciAPI extends ExerciseApplication {
      */
     @GetMapping(value = "Fibonacci", produces = MediaType.APPLICATION_JSON_VALUE)
     public long fibonacci(@RequestParam(value = "n") long index) throws Exception {
-        if(index < 1) throw new IllegalArgumentException("Please provide a natural number.");
-        if(index >= START_OVERFLOW_INDEX) throw new Exception("The fibonacci number with the given input is too large");
+        if(Math.abs(index) >= START_OVERFLOW_INDEX) throw new Exception("The fibonacci number with the given input is too large");
+        int sign = index >= 0 ? 1 : -1;
+        long fibonacciNumber = getNthFibonacciNumber(Math.abs(index));
+        long answer = sign * fibonacciNumber;
+        return answer;
+    }
 
+    private long getNthFibonacciNumber(long index){
         long first = 0;
         long second = 1;
         if (index == 0) return 0;

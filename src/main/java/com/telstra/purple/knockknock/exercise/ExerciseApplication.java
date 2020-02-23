@@ -15,6 +15,8 @@ public class ExerciseApplication {
 		SpringApplication.run(ExerciseApplication.class, args);
 	}
 
+
+
 	@ModelAttribute
 	public void setResponseHeder(HttpServletResponse response){
 		response.setHeader("cache-control", "no-cache");

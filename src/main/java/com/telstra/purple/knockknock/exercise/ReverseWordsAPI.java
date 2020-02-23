@@ -1,5 +1,6 @@
 package com.telstra.purple.knockknock.exercise;
 
+import com.telstra.purple.knockknock.exercise.utils.StringPostProcessor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +38,7 @@ public class ReverseWordsAPI extends ExerciseApplication {
         if(sentence.charAt(sentence.length()-1) != ' '){
             reversedSentence.append(word.reverse());
         }
-        return reversedSentence.toString();
+        String answer = StringPostProcessor.process(reversedSentence.toString());
+        return answer;
     }
 }

@@ -1,8 +1,10 @@
 package com.telstra.purple.knockknock.exercise;
 
+import com.telstra.purple.knockknock.exercise.utils.StringPostProcessor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,7 +16,12 @@ public class TokenAPI extends ExerciseApplication {
      */
     @GetMapping(value = "Token", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getToken() {
-        return TOKEN;
+        return StringPostProcessor.process(TOKEN);
+    }
+
+    @GetMapping("/helloworld")
+    public String hello() {
+        return "\"" + "Hello World" + "\"";
     }
 
 }
