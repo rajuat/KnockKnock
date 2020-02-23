@@ -14,7 +14,7 @@ public class FibonacciAPI extends ExerciseApplication {
      * @param index is the index of the fibonacci sequence
      * @return nth number of the fibonacci sequence
      */
-    @GetMapping("Fibonacci")
+    @GetMapping(value = "Fibonacci", produces = "text/json")
     public long fibonacci(@RequestParam(value = "n") long index) throws Exception {
         if(index < 1) throw new IllegalArgumentException("Please provide a natural number.");
         if(index >= START_OVERFLOW_INDEX) throw new Exception("The fibonacci number with the given input is too large");

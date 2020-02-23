@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletResponse;
 
 @SpringBootApplication
-@RequestMapping(value = "/api/", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/")
 public class ExerciseApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ExerciseApplication.class, args);

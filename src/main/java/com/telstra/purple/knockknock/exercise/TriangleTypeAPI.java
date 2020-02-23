@@ -2,6 +2,7 @@ package com.telstra.purple.knockknock.exercise;
 
 import com.telstra.purple.knockknock.exercise.utils.TriangleType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class TriangleTypeAPI extends ExerciseApplication {
      * @param lengthC length of side
      * @return "Equilateral", "Isosceles", "Scalene" or "Error"
      */
-    @GetMapping("TriangleType")
+    @GetMapping(value = "TriangleType", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getTriangleType(@RequestParam("a") int lengthA, @RequestParam("b") int lengthB, @RequestParam("c") int lengthC) {
         if (isValidTriangle(lengthA, lengthB, lengthC)) {
             Set<Integer> uniqueNoOfSides = new HashSet<>();
