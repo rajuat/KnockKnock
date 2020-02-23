@@ -1,5 +1,6 @@
 package com.telstra.purple.knockknock.exercise;
 
+import com.telstra.purple.knockknock.exercise.utils.TriangleType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,31 +14,35 @@ import java.util.Set;
 public class TriangleTypeAPI extends ExerciseApplication {
     /**
      * Returns the type of triangle given the lengths of its sides
-     * @param a length of side
-     * @param b length of side
-     * @param c length of side
+     *
+     * @param lengthA length of side
+     * @param lengthB length of side
+     * @param lengthC length of side
      * @return "Equilateral", "Isosceles", "Scalene" or "Error"
      */
     @GetMapping("TriangleType")
-    public String getTriangleType(@RequestParam("a") int a, @RequestParam("b") int b, @RequestParam("c") int c) {
-        if (isValidTriangle(a, b, c)) {
+    public String getTriangleType(@RequestParam("a") int lengthA, @RequestParam("b") int lengthB, @RequestParam("c") int lengthC) {
+        if (isValidTriangle(lengthA, lengthB, lengthC)) {
             Set<Integer> uniqueNoOfSides = new HashSet<>();
-            uniqueNoOfSides.add(a);
-            uniqueNoOfSides.add(b);
-            uniqueNoOfSides.add(c);
+            uniqueNoOfSides.add(lengthA);
+            uniqueNoOfSides.add(lengthB);
+            uniqueNoOfSides.add(lengthC);
             int sides = uniqueNoOfSides.size();
-            if(sides == 1) return "Equilateral";
-            if(sides == 2) return "Isosceles";
-            return "Scalene";
+            if (sides == 1) return TriangleType.EQUILATERAL.toString();
+            if (sides == 2) return TriangleType.ISOSCELES.toString();
+            return TriangleType.SCALENE.toString();
         } else {
-            return "Error";
+            return TriangleType.ERROR.toString();
         }
     }
 
     /*
-     * The sum of the length of any two sides should be greater than that of the third side
+     * All sides have a length.
+     * The sum of the length of any two sides should be greater than that of the third side.
      */
-    private boolean isValidTriangle(int a, int b, int c) {
-        return (a + b > c && b + c > a && c + a > b);
+    private boolean isValidTriangle(int lengthA, int lengthB, int lengthC) {
+        boolean allPositive = lengthA > 0 && lengthB > 0 && lengthC > 0;
+        boolean valid = lengthA + lengthB > lengthC && lengthB + lengthC > lengthA && lengthC + lengthA > lengthB;
+        return allPositive && valid;
     }
 }

@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 public class FibonacciAPITest {
     @Test
-    public void canGetNthFibonacciNumber() {
+    public void canGetNthFibonacciNumber() throws Exception{
         FibonacciAPI api = new FibonacciAPI();
-        long ans = api.fibonacci(4444444);
-        Assertions.assertEquals(7642726929121149811L, ans);
+        long ans = api.fibonacci(90);
+        Assertions.assertEquals(2880067194370816120L, ans);
     }
 }

@@ -15,6 +15,8 @@ public class ReverseWordsAPI extends ExerciseApplication {
      */
     @GetMapping("ReverseWords")
     public String reverseWords(@RequestParam("sentence") String sentence){
+        if(sentence == null) throw new IllegalArgumentException("Please provide a sentence in order to reverse it.");
+
         StringBuilder reversedSentence = new StringBuilder();
         StringBuilder word = new StringBuilder();
         for(char ch : sentence.toCharArray()){
