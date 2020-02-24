@@ -1,22 +1,17 @@
-package com.telstra.purple.knockknock.exercise;
+package com.telstra.purple.knockknock.exercise.services;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.telstra.purple.knockknock.exercise.KnockKnockApplication;
+import org.springframework.stereotype.Service;
 
-@RestController
-@EnableAutoConfiguration
-public class FibonacciAPI extends ExerciseApplication {
+@Service
+public class FibonacciService {
     private final int START_OVERFLOW_INDEX = 93;
     /**
      * Returns the nth number in the fibonacci sequence.
      * @param index is the index of the fibonacci sequence
      * @return nth number of the fibonacci sequence
      */
-    @GetMapping(value = "Fibonacci", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String fibonacci(@RequestParam(value = "n") long index) throws Exception {
+    public String fibonacci(long index) throws Exception {
         if(Math.abs(index) >= START_OVERFLOW_INDEX) throw new Exception("The fibonacci number with the given input is too large");
         int sign = index >= 0 ? 1 : -1;
         long fibonacciNumber = getNthFibonacciNumber(Math.abs(index));

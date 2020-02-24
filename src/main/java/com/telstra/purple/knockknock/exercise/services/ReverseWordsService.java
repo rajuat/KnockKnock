@@ -1,22 +1,17 @@
-package com.telstra.purple.knockknock.exercise;
+package com.telstra.purple.knockknock.exercise.services;
 
+import com.telstra.purple.knockknock.exercise.KnockKnockApplication;
 import com.telstra.purple.knockknock.exercise.utils.StringPostProcessor;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
-@EnableAutoConfiguration
-public class ReverseWordsAPI extends ExerciseApplication {
+@Service
+public class ReverseWordsService {
     /**
      * Reverses the letters of each word in a sentence.
      * @param sentence A sentence
      * @return A sentence with each words reversed.
      */
-    @GetMapping(value = "ReverseWords", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String reverseWords(@RequestParam("sentence") String sentence){
+    public String reverseWords(String sentence){
         if(sentence == null) throw new IllegalArgumentException("Please provide a sentence in order to reverse it.");
 
         StringBuilder reversedSentence = new StringBuilder();

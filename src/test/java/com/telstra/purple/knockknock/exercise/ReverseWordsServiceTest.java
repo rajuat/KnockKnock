@@ -1,14 +1,15 @@
 package com.telstra.purple.knockknock.exercise;
 
+import com.telstra.purple.knockknock.exercise.services.ReverseWordsService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ReverseWordsAPITest {
+public class ReverseWordsServiceTest {
 
     @Test
     public void canReverseEachWordInASentence(){
-        ReverseWordsAPI api = new ReverseWordsAPI();
+        ReverseWordsService api = new ReverseWordsService();
         String reversed = api.reverseWords("Hello World");
-        Assertions.assertEquals("olleH dlroW", reversed);
+        Assertions.assertEquals("\"" + "olleH dlroW" + "\"", reversed);
     }
 }

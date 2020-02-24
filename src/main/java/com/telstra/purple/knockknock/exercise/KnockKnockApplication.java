@@ -2,7 +2,6 @@ package com.telstra.purple.knockknock.exercise;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,9 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @SpringBootApplication
 @RequestMapping(value = "/api/")
-public class ExerciseApplication {
+public class KnockKnockApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(ExerciseApplication.class, args);
+		SpringApplication.run(KnockKnockApplication.class, args);
 	}
 
 

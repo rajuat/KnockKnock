@@ -1,9 +1,10 @@
-package com.telstra.purple.knockknock.exercise;
+package com.telstra.purple.knockknock.exercise.services;
 
 import com.telstra.purple.knockknock.exercise.utils.StringPostProcessor;
 import com.telstra.purple.knockknock.exercise.utils.TriangleType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashSet;
 import java.util.Set;
 
-@RestController
-@EnableAutoConfiguration
-public class TriangleTypeAPI extends ExerciseApplication {
+@Service
+public class TriangleTypeService {
     /**
      * Returns the type of triangle given the lengths of its sides
      *
@@ -22,8 +22,7 @@ public class TriangleTypeAPI extends ExerciseApplication {
      * @param lengthC length of side
      * @return "Equilateral", "Isosceles", "Scalene" or "Error"
      */
-    @GetMapping(value = "TriangleType", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getTriangleType(@RequestParam("a") int lengthA, @RequestParam("b") int lengthB, @RequestParam("c") int lengthC) {
+    public String getTriangleType(int lengthA, int lengthB, int lengthC) {
         String answer = null;
         if (isValidTriangle(lengthA, lengthB, lengthC)) {
             Set<Integer> uniqueNoOfSides = new HashSet<>();
