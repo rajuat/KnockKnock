@@ -16,12 +16,12 @@ public class FibonacciAPI extends ExerciseApplication {
      * @return nth number of the fibonacci sequence
      */
     @GetMapping(value = "Fibonacci", produces = MediaType.APPLICATION_JSON_VALUE)
-    public long fibonacci(@RequestParam(value = "n") long index) throws Exception {
+    public String fibonacci(@RequestParam(value = "n") long index) throws Exception {
         if(Math.abs(index) >= START_OVERFLOW_INDEX) throw new Exception("The fibonacci number with the given input is too large");
         int sign = index >= 0 ? 1 : -1;
         long fibonacciNumber = getNthFibonacciNumber(Math.abs(index));
         long answer = sign * fibonacciNumber;
-        return answer;
+        return String.valueOf(answer);
     }
 
     private long getNthFibonacciNumber(long index){
